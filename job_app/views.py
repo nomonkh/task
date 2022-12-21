@@ -14,9 +14,9 @@ class TaskView(viewsets.ModelViewSet):
         try:
             serializer = self.serializer_class(data=request.data)
             if serializer.is_valid():
-                executor = request.data.pop('executor')
-                ExecutorModel.objects.create(**executor)
-                TaskModel.objects.create(**request.data, executor_id=executor.id)
+                # executor = request.data.pop('executor')
+                # ExecutorModel.objects.create(**executor)
+                TaskModel.objects.create(**request.data)
                 return Response({'msg': 'true'}, status=status.HTTP_201_CREATED)
         except Exception as e:
             return Response({'msg': str(e)})

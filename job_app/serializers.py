@@ -11,19 +11,21 @@ class ExecutorSerializer(serializers.ModelSerializer):
         )
 
 
-class SingleTaskSerializer(serializers.ModelSerializer):
-    def create(self, validated_data):
-        TaskModel(**validated_data).save()
-        return ''
+class TaskSerializer(serializers.ModelSerializer):
+    # executor = ExecutorSerializer()
+
     class Meta:
         model = TaskModel
         fields = (
             '__all__'
         )
+        depth = 1
 
 
-class TaskSerializer(serializers.ModelSerializer):
-    executor = ExecutorSerializer()
+class SingleTaskSerializer(serializers.ModelSerializer):
+    def create(self, validated_data):
+        TaskModel(**validated_data).save()
+        return ''
 
     class Meta:
         model = TaskModel
