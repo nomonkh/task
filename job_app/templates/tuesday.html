@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+    {% load task_tags %}
+    {% get_data_tuesday as data_tuesday %}
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <br>
+        <table class="table-bordered">
+          <tr>
+            <th rowspan="2" style="vertical-align : middle;text-align:center; width: 0.6%;">№</th>
+            <th rowspan="2" style="vertical-align : middle;text-align:center; width: 14%;">Вазифалар</th>
+            <th rowspan="2" style="vertical-align : middle;text-align:center; width: 4%;">Масул</th>
+            <th rowspan="2" style="vertical-align : middle;text-align:center; width: 0.5%;">Файл</th>
+            <th colspan="2" style="horizontal-align : middle;text-align:center; width: 520%;">Вақт</th>
+            <th rowspan="2" style="vertical-align : middle;text-align:center; width: 1%;">Статус</th>
+            <th rowspan="2" style="vertical-align : middle;text-align:center; width: 1%;">Тахрирлаш</th>
+          </tr>
+          <tr>
+            <th class="table-success" scope="col" style="text-align: center; width: 1.5%; background: forestgreen">Киритилган</th>
+            <th class="table-success" scope="col" style="text-align: center; width: 1.5%; background: forestgreen">Бажарилган</th>
+          </tr>
+
+
+            {% if data_tuesday %}
+                {% for data in data_tuesday %}
+                    {% if request.user == data.author %}
+                        <tr>
+                            <th class="aaaa">{{ forloop.counter }}</th>
+                            <td>{{ data.name_of_task }}</td>
+                            <td>{{ data.executor }}</td>
+                            <td>{{ data.confirmation }}</td>
+                            <td>{{ data.time_taken }}</td>
+                            <td>{{ data.time_finished }}</td>
+                            <td>{{ data.status }}</td>
+                            <td>
+                                <a class="del_link" href="{% url 'job_app:update_task' data.id %}">
+                                <span data-feather="edit"></span>
+                                </a>
+
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                    <th class="aaaa"></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+            {% endif %}
+
+      </table>
+    </main>
+            <style>
+            .day {
+              height: 100px;
+              width: 50px;
+            }
+
+            .del_link {
+                color:black;
+            }
+
+            .task {
+              height: 100px;
+              width: 280px;
+            }
+
+            .duration {
+              height: 100px;
+              width: 280px;
+
+            }
+
+            .doing {
+              height: 100px;
+              width: 250px;
+            }
+
+
+            .aaaa {
+              text-align: center;
+              height: 100px;
+              width: 50px;
+            }
+
+            .container {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+
+            .thh {
+              height: 45px;
+              width:250px;
+              text-align: center;
+            }
+
+
+            td {
+              text-align: center;
+            }
+        </style>
+
+{% endblock %}
+

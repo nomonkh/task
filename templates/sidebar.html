@@ -1,0 +1,136 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Бошкарув панели</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+
+
+    <!-- Bootstrap core CSS -->
+<link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'dashboard.css' %}" rel="stylesheet">
+  </head>
+
+
+<style>
+.nav-link {
+    color: white !important;
+    margin-left: 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 2s;
+}
+.nav-link:hover {
+    color: black !important;
+    background: white;
+    box-shadow: 2px 2px 5px white;
+}
+
+</style>
+
+  <body>
+
+<header class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow" style="background: #222629">
+{#  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Бошқарув панели</a>#}
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{% url 'account:update_account' %}">
+          <span data-feather="user"></span>
+            {{ request.user }}
+        </a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <a class="nav-link px-3" href="{% url 'job_app:task_monday' %}">Душанба</a>
+    <a class="nav-link px-3"  href="{% url 'job_app:task_tuesday' %}">Сешанба</a>
+    <a class="nav-link px-3"  href="{% url 'job_app:task_wednesday' %}">Чоршанба</a>
+    <a class="nav-link px-3"  href="{% url 'job_app:task_thursday' %}">Пайшанба</a>
+    <a class="nav-link px-3"  href="{% url 'job_app:task_friday' %}">Жума</a>
+    <a class="nav-link px-3"  href="{% url 'job_app:task_saturday' %}">Шанба</a>
+
+  <div class="navbar-nav">
+
+  </div>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse" style="background: #222629">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'account:signin' %}">
+              <span data-feather="home"></span>
+              Вазифалар
+            </a>
+          </li>
+
+{#          <li class="nav-item">#}
+{#            <a class="nav-link" href="#">#}
+{#              <span data-feather="shopping-cart"></span>#}
+{#              Products#}
+{#            </a>#}
+{#          </li>#}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'job_app:add_task' %}">
+              <span data-feather="layers"></span>
+              Вазифа қошиш
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'job_app:executors_view' %}">
+              <span data-feather="users"></span>
+              Ижрочилар
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'job_app:create_executor' %}">
+              <span data-feather="user-plus"></span>
+               Ижрочи қошиш
+            </a>
+          </li>
+
+{#          <li class="nav-item">#}
+{#            <a class="nav-link" href="#">#}
+{#              <span data-feather="user"></span>#}
+{#                {{ request.user }}#}
+{#            </a>#}
+{#          </li>#}
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account:signout' %}">
+              <span data-feather="log-out"></span>
+              Чиқиш
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+  </div>
+</div>

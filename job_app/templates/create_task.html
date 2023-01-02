@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+	<!-- Content page -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <br>
+    <br>
+    <br>
+    <br>
+    <form method='post' enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Яратиш</button>
+    </form>
+{#        <form method="post" enctype="multipart/form-data">#}
+{#            {% csrf_token %}#}
+{#          <div class="form-row">#}
+{#            <div class="form-group col-md-6">#}
+{#                <br>#}
+{#              <label for="inputEmail4">Vazifa qabul qilinadigan san'a</label>#}
+{#                <br>#}
+{#                <br>#}
+{#              <input type="date" class="form-control" name="time_taken" id="inputEmail4">#}
+{#            </div>#}
+{#            <div class="form-group col-md-6">#}
+{#                <br>#}
+{#                <br>#}
+{#              <label for="inputPassword4">Vazifa boshlanish san'asi</label>#}
+{#                <br>#}
+{#                <br>#}
+{#              <input type="datetime-local" class="form-control" id="inputPassword4" name="time_started">#}
+{#            </div>#}
+{#          </div>#}
+{#          <div class="col-md-6">#}
+{#              <br>#}
+{#              <br>#}
+{#            <label>Kun vaqti</label>#}
+{#              <br>#}
+{#              <br>#}
+{#              <select name="time_of_day" class="form-control">#}
+{#                  <option selected="selected" value="09:00-10:00">09:00-10:00</option>#}
+{#                  <option value="10:00-11:00">10:00-11:00</option>#}
+{#                  <option value="11:00-12:30">11:00-12:30</option>#}
+{#                  <option value="14:00-15:30">14:00-15:30</option>#}
+{#                  <option value="16:00-17:00">16:00-17:00</option>#}
+{#                  <option value="17:00-18:00">17:00-18:00</option>#}
+{#              </select>#}
+{#              <br>#}
+{#          </div>#}
+{#          <div class="col-md-6">#}
+{#              <br>#}
+{#              <br>#}
+{#            <label for="inputAddress2">Vazifa nomi</label>#}
+{#              <br>#}
+{#              <br>#}
+{#            <input type="text" class="form-control" id="inputAddress2" name="name_of_task">#}
+{#          </div>#}
+{#          <div class="form-row">#}
+{##}
+{#          <div class="col-md-6">#}
+{#              <br>#}
+{#              <br>#}
+{#            <label>Holati</label>#}
+{#              <br>#}
+{#              <br>#}
+{#              <select name="status" class="form-control">#}
+{#                  <option selected="selected" value="Male">Bajarilmadi</option>#}
+{#                  <option value="Female">Bajarildi</option>#}
+{#              </select>#}
+{#              <br>#}
+{#          </div>#}
+{##}
+{##}
+{#            <div class="form-group col-md-6">#}
+{#                <br>#}
+{#                <br>#}
+{#              <label for="inputCity">Tasdiqlash fayli</label>#}
+{#                <br>#}
+{#                <br>#}
+{#              <input type="file" name="confirmation" class="form-control" id="inputCity">#}
+{#            </div>#}
+{##}
+{##}
+{#          <div class="col-md-6">#}
+{#              <br>#}
+{#              <br>#}
+{#            <label>Ijrochi</label>#}
+{#              <br>#}
+{#              <br>#}
+{#              <select name="executor" class="form-control">#}
+{#                  {% for each in time %}#}
+{#                      {% for author in each.executor %}#}
+{#                        <option value="{{ author.id }}">{{ author.first_name }}</option>#}
+{#                      {% endfor %}#}
+{#                  {% endfor %}#}
+{#              </select>#}
+{#              <br>#}
+{#          </div>#}
+{##}
+{#          </div>#}
+{##}
+{#            <br>#}
+{#          <button type="submit" class="btn btn-primary">Create</button>#}
+{#            <br>#}
+{#        </form>#}
+    </main>
+{% endblock %}

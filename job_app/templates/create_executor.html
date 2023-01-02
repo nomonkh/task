@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+	<!-- Content page -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <br>
+    <br>
+    <br>
+    <br>
+    <form method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Яратиш</button>
+    </form>
+    </main>
+{% endblock %}

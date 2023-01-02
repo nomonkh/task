@@ -1,5 +1,4 @@
 from rest_framework import serializers
-
 from .models import TaskModel, ExecutorModel
 
 
@@ -12,8 +11,6 @@ class ExecutorSerializer(serializers.ModelSerializer):
 
 
 class TaskSerializer(serializers.ModelSerializer):
-    # executor = ExecutorSerializer()
-
     class Meta:
         model = TaskModel
         fields = (

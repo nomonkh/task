@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+	<!-- Content page -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <br>
+        <table class="table-bordered" style="align-items: center">
+          <tr>
+            <th rowspan="2" style="vertical-align : middle;text-align:center; width: 0.6%;">№</th>
+            <th rowspan="2" style="vertical-align : middle;text-align:center; width: 14%;">Исм</th>
+            <th rowspan="2" style="vertical-align : middle;text-align:center; width: 14%;">Фамилия</th>
+            <th rowspan="2" style="vertical-align : middle;text-align:center; width: 14%;">Отасининг исми</th>
+            <th rowspan="2" style="vertical-align : middle;text-align:center; width: 15%;">Телефон раками</th>
+            <th rowspan="2" style="vertical-align : middle;text-align:center; width: 8%;">Сектор</th>
+            <th rowspan="2" style="vertical-align : middle;text-align:center; width: 2%;">Ӯчириш</th>
+            <th rowspan="2" style="vertical-align : middle;text-align:center; width: 2%;">Тахрирлаш</th>
+          </tr>
+
+
+            <tbody>
+                {% if users %}
+                    {% for each in users %}
+                        {% if request.user == each.author %}
+                            <tr>
+                                <th class="aaaa">{{ forloop.revcounter }}</th>
+                                <td>{{ each.first_name }}</td>
+                                <td>{{ each.second_name }}</td>
+                                <td>{{ each.third_name }}</td>
+                                <td>{{ each.phone }}</td>
+                                <td>{{ each.sector }}</td>
+                                <td>
+                                    <a class="del_link" href="{% url 'job_app:del_user' each.id %}">
+                                    <span data-feather="trash"></span>
+                                </a>
+                                </td>
+                                <td>
+                                    <a class="del_link" href="{% url 'job_app:update_executor' each.id %}">
+                                    <span data-feather="edit"></span>
+                                </a>
+
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                        <th class="aaaa"></th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                {% endif %}
+            </tbody>
+
+        </table>
+    </main>
+    <style>
+        .day {
+          height: 100px;
+          width: 50px;
+        }
+
+        .task {
+          height: 100px;
+          width: 280px;
+        }
+
+        .duration {
+          height: 100px;
+          width: 280px;
+
+        }
+
+        .doing {
+          height: 100px;
+          width: 250px;
+        }
+
+        .del_link {
+            color:black;
+        }
+        .aaaa {
+          text-align: center;
+          height: 100px;
+          width: 50px;
+        }
+
+        .container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .thh {
+          height: 45px;
+          width:250px;
+          text-align: center;
+        }
+
+
+        td {
+          text-align: center;
+        }
+    </style>
+
+{% endblock %}
